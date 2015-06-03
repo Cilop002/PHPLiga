@@ -50,12 +50,12 @@
                 </tr>
             </table>
         </form>
-        <?php
+<?php
 //creacion del  Data Acces Object
 require_once 'DAOEquipo.php';
 $dao = new DAOEquipo();
 
-
+$dao->listar();
 function cargar(){
     $equi = new Equipo();
     $equi->setIdEquipo($_POST['id']);
@@ -73,15 +73,15 @@ function cargar(){
 //que boton? si modificar eliminar o ingresar
 if(isset($_POST['btnAdd'])){
     $dao->insertar(cargar());
-    $dao->listar();
+    header("location: vistaEquipoSU.php");
 }
 if(isset($_POST['btnDel'])){
     $dao->eliminar(cargar());
-    $dao->listar();
+    header("location: vistaEquipoSU.php");
 }
 if(isset($_POST['btnMod'])){
     $dao->modificar(cargar());
-    $dao->listar();
+    header("location: vistaEquipoSU.php");
 }
 if(isset($_POST['cmdBuscar'])){
     $dao->buscar(cargar());
